@@ -1,0 +1,10 @@
+.hotelWrap{
+    border:1px solid #7e7e7e;
+    margin-bottom: 10px;
+}
+.hotelImage{
+    max-width: 300px;
+    max-height: 100px;
+    object-fit: cover;
+    width: 100%;
+}

@@ -1,0 +1,13 @@
+.navigation ul{
+    display: block;
+    list-style-type: none;
+
+    text-align: left;
+}
+.navigation .menuItem{
+    display: inline-block;
+}
+.menuContainer{
+    border:1px solid #000;
+    margin:10px auto;
+}

@@ -1,0 +1,10 @@
+.header{
+    height: 50px;
+    background-color: rgb(66, 67, 102);
+    background: url(../../assets/images/background.jpg);
+    background-position: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:40px 20px;
+}
