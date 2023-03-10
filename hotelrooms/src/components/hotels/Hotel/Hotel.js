@@ -21,7 +21,7 @@ function Hotel(){
             </div>
         </div>
         <div className="col-12">    
-            <p>Description</p>
+            <p className="my-2">Description</p>
             <div className="d-flex justify-content-end">
                 <a href="#" className="btn btn-primary float-right">Show</a>
             </div>
