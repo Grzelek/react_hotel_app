@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Hotel.module.css"
 import hotelImg from '../../../assets/images/image-placeholder.jpg'
 
-function Hotel(){
+function Hotel(props){
     return(
     <div className={`row ${styles.hotelWrap}`}>
         <div className="col-4">
@@ -11,17 +11,17 @@ function Hotel(){
         <div className="col-8">
             <div className="row">
                 <div className="col">
-                    <p>Title</p>
-                    <p>Town</p>
+                    <p>{props.name}</p>
+                    <p>{props.town}</p>
                 </div>
                 <div className="col">
-                    <p>Ocena: 8.3</p>
+                    <p>Ocena: {props.rating}</p>
                     <p>Opinie: 100</p>
                 </div>
             </div>
         </div>
         <div className="col-12">    
-            <p className="my-2">Description</p>
+            <p className="my-2">{props.description}</p>
             <div className="d-flex justify-content-end">
                 <a href="#" className="btn btn-primary float-right">Show</a>
             </div>
