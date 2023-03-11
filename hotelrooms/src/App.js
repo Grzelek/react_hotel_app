@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Hotels from './components/Hotels/Hotels';
