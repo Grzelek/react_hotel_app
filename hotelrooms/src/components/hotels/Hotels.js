@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import {Component} from "react";
 import Hotel from "./Hotel/Hotel";
 import styles from "./Hotels.module.css"
 
