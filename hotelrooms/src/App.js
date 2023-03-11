@@ -11,7 +11,7 @@ class App extends Component {
         name: 'Prime Hotel',
         town: 'London',
         rating: 8.2,
-        description: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus ullamcorper quam.',
         image: ''
       },
       {
@@ -20,6 +20,23 @@ class App extends Component {
         town: 'Watford',
         rating: 7.4,
         description: 'Lorem Ipsum impsum lorem',
+        image:''
+      },
+      {
+        id:3,
+        name: 'Holiday Inn',
+        town: 'Milton Keynes',
+        rating: 4.8,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus ullamcorper quam.',
+        image:''
+    
+      },
+      {
+        id:4,
+        name: 'Knights Hotel',
+        town: 'St Albans',
+        rating: 9.6,
+        description: ' Mauris maximus mi non aliquam elementum. Pellentesque eu lorem erat. Phasellus ornare ornare libero, non volutpat sapien luctus a.',
         image:''
       },
     ];
