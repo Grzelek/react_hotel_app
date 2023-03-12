@@ -6,6 +6,7 @@ import Loader from './components/UI/Loader/Loader';
 import { Component } from 'react';
 import Searchbar from './components/UI/Loader/Searchbar/Searchbar';
 import Layout from './components/Layout/Layout';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   hotels = [
@@ -82,7 +83,7 @@ componentDidMount(){
             : (<Hotels hotels={this.state.hotels} loading={this.state.loading}/>)
           }
           footer={
-            <div></div>
+            <Footer />
           }
         />
       </div>
