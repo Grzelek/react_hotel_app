@@ -4,6 +4,7 @@ import Menu from './components/Menu/Menu';
 import Hotels from './components/Hotels/Hotels';
 import Loader from './components/UI/Loader/Loader';
 import { Component } from 'react';
+import Searchbar from './components/UI/Loader/Searchbar/Searchbar';
 
 class App extends Component {
   hotels = [
@@ -65,7 +66,8 @@ componentDidMount(){
   render(){
     return (
       <div className="App">
-        <Header onSearch={(term) => this.searchHandler(term)}></Header>
+        {/* <Header onSearch={(term) => this.searchHandler(term)}></Header> */}
+        <Header><Searchbar onSearch={(term) => this.searchHandler(term)}></Searchbar></Header>
         <Menu />
         {
           this.state.loading ? (
