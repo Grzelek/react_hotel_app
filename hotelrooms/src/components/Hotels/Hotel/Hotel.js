@@ -34,7 +34,7 @@ function Hotel(props){
         <div className="col-12">    
             <p className="my-2">{props.description}</p>
             <div className="d-flex justify-content-end">
-                <a href="#" className="btn btn-primary float-right">Show</a>
+                <a href="#" className={`btn btn-${props.theme} float-right`}>Show</a>
             </div>
             
         </div>

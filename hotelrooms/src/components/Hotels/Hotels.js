@@ -16,7 +16,13 @@ class Hotels extends Component {
            
             <div className={`${styles.hotelsWrap} container`}>
             <h2 className={styles.header}>Oferty</h2>
-            {this.props.hotels.map(hotel => <Hotel key={hotel.id} {...hotel}/>)}
+            {this.props.hotels.map(hotel => 
+                    <Hotel
+                        theme={this.props.theme}
+                        key={hotel.id} {...hotel}
+                    />
+                )
+             }
             </div>);
     }
 }
