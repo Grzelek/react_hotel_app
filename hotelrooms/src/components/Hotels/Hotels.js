@@ -18,7 +18,6 @@ class Hotels extends Component {
             <h2 className={styles.header}>Oferty</h2>
             {this.props.hotels.map(hotel => 
                     <Hotel
-                        theme={this.props.theme}
                         key={hotel.id} {...hotel}
                     />
                 )

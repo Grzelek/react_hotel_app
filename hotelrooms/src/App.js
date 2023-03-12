@@ -3,13 +3,19 @@ import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Hotels from './components/Hotels/Hotels';
 import Loader from './components/UI/Loader/Loader';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Searchbar from './components/UI/Searchbar/Searchbar';
 import Layout from './components/Layout/Layout';
 import Footer from './components/Footer/Footer';
 import ThemeButton from './components/UI/ThemeButton/ThemeButton';
+import {ThemeContext} from './context/themeContext';
+
+
 
 class App extends Component {
+
+  static contextType = ThemeContext
+
   hotels = [
       {
         id:1,
@@ -68,46 +74,45 @@ componentDidMount(){
 }
 
 changeTheme = () => {
-  const newTheme = (this.state.theme == 'primary') 
+  const newTheme = (this.state.theme === 'primary') 
   ? 'secondary'
   : 'primary'
   this.setState({theme:newTheme})
 }
 
   render(){
+    const header = (
+      <Header>
+        <Searchbar 
+          onSearch={(term) => this.searchHandler(term)}
+        
+        ></Searchbar>
+        <ThemeButton />
+      </Header>
+    )
+    const content = (
+      this.state.loading 
+      ? (<Loader text={'Loading Hotels'} />)
+      : (<Hotels 
+        hotels={this.state.hotels} 
+        loading={this.state.loading}
+        />)
+    )
+
     return (
+      <ThemeContext.Provider value={{
+        theme: this.state.theme,
+        onChange: this.changeTheme
+      }}>
       <div className="App">
         <Layout 
-          header={
-            <Header>
-              <Searchbar 
-                onSearch={(term) => this.searchHandler(term)}
-                theme={this.state.theme}
-              ></Searchbar>
-              <ThemeButton onChange={this.changeTheme} />
-            </Header>
-          }
-          menu={
-            <Menu 
-              theme={this.state.theme}
-            />
-          }
-          content={
-            this.state.loading 
-            ? (<Loader text={'Loading Hotels'} theme={this.state.theme} />)
-            : (<Hotels 
-              hotels={this.state.hotels} 
-              loading={this.state.loading}
-              theme={this.state.theme}
-              />)
-          }
-          footer={
-            <Footer 
-              theme={this.state.theme}
-            />
-          }
+          header={header}
+          menu={<Menu />}
+          content={content}
+          footer={<Footer />}
         />
       </div>
+      </ThemeContext.Provider>
     )
   };
 }

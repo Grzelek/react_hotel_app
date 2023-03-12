@@ -1,6 +1,7 @@
 import styles from "./Hotel.module.css"
 import hotelImg from '../../../assets/images/image-placeholder.jpg'
 import PropTypes from 'prop-types';
+import {ThemeContext} from "../../../context/themeContext";
 
 
 const propTypes = {
@@ -34,7 +35,12 @@ function Hotel(props){
         <div className="col-12">    
             <p className="my-2">{props.description}</p>
             <div className="d-flex justify-content-end">
-                <a href="#" className={`btn btn-${props.theme} float-right`}>Show</a>
+                <ThemeContext.Consumer>
+                    {
+                        obj =>
+                        <a href="#" className={`btn btn-${obj.theme} float-right`}>Show</a>
+                    }
+               </ThemeContext.Consumer>
             </div>
             
         </div>

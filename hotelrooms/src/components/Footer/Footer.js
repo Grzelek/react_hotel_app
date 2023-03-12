@@ -1,3 +1,5 @@
+import {ThemeContext} from "../../context/themeContext";
+
 /*
 export default function Footer(){
     return(
@@ -17,8 +19,12 @@ export default () => (
 const date = new Date();
 
 const Footer = (props) =>(
-    <div className={`text-center container m-2`}>
-        <div className={`text-${props.theme}`}>footer {date.getFullYear()}</div>
-    </div>
+    <ThemeContext.Consumer>
+        {obj => 
+            <div className={`text-center container m-2`}>
+            <div className={`text-${obj.theme}`}>footer {date.getFullYear()}</div>
+            </div>
+        }
+        </ThemeContext.Consumer>    
 )
 export default Footer;
