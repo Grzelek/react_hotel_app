@@ -5,6 +5,7 @@ import Hotels from './components/Hotels/Hotels';
 import Loader from './components/UI/Loader/Loader';
 import { Component } from 'react';
 import Searchbar from './components/UI/Loader/Searchbar/Searchbar';
+import Layout from './components/Layout/Layout';
 
 class App extends Component {
   hotels = [
@@ -66,20 +67,27 @@ componentDidMount(){
   render(){
     return (
       <div className="App">
-        {/* <Header onSearch={(term) => this.searchHandler(term)}></Header> */}
-        <Header><Searchbar onSearch={(term) => this.searchHandler(term)}></Searchbar></Header>
-        <Menu />
-        {
-          this.state.loading ? (
-            <Loader text={'Loading Hotels'} />
-          ) : (
-            <Hotels hotels={this.state.hotels} loading={this.state.loading}/>
-          )
-        }
-        
+        <Layout 
+          header={
+            <Header>
+              <Searchbar onSearch={(term) => this.searchHandler(term)}></Searchbar>
+            </Header>
+          }
+          menu={
+            <Menu />
+          }
+          content={
+            this.state.loading 
+            ? (<Loader text={'Loading Hotels'} />)
+            : (<Hotels hotels={this.state.hotels} loading={this.state.loading}/>)
+          }
+          footer={
+            <div></div>
+          }
+        />
       </div>
-    );
-}
+    )
+  };
 }
 
 export default App;
