@@ -2,6 +2,7 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Hotels from './components/Hotels/Hotels';
+import Loader from './components/UI/Loader/Loader';
 import { Component } from 'react';
 
 class App extends Component {
@@ -40,21 +41,25 @@ class App extends Component {
         image:''
       },
     ];
+
   state = {
-    hotels: this.hotels
-  
+    hotels: [],
+    loading: true,  
   }
   
 searchHandler(term){
- 
-  console.log(term, 'aaa ', term.toLowerCase())
   const hotels = [...this.hotels].filter(
         x => x.name.toLowerCase()
         .includes(term.toLowerCase())
       )
   this.setState({hotels})
+}
 
-  
+componentDidMount(){
+  console.log('didMoint')
+  setTimeout(() =>{
+    this.setState({hotels: this.hotels, loading:false})
+  },1000)
 }
 
   render(){
@@ -62,7 +67,14 @@ searchHandler(term){
       <div className="App">
         <Header onSearch={(term) => this.searchHandler(term)}></Header>
         <Menu />
-        <Hotels hotels={this.state.hotels}/>
+        {
+          this.state.loading ? (
+            <Loader text={'Loading Hotels'} />
+          ) : (
+            <Hotels hotels={this.state.hotels} loading={this.state.loading}/>
+          )
+        }
+        
       </div>
     );
 }
