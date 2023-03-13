@@ -22,7 +22,7 @@ const Footer = (props) =>(
     <ThemeContext.Consumer>
         {obj => 
             <div className={`text-center container m-2`}>
-            <div className={`text-${obj.theme}`}>footer {date.getFullYear()}</div>
+            <div className={`text-${obj.colorTheme}`}>footer {date.getFullYear()}</div>
             </div>
         }
         </ThemeContext.Consumer>    

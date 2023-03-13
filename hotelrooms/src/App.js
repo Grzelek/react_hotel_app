@@ -55,7 +55,7 @@ class App extends Component {
   state = {
     hotels: [],
     loading: true, 
-    theme:'primary'
+    colorTheme:'primary'
   }
   
 searchHandler(term){
@@ -74,10 +74,10 @@ componentDidMount(){
 }
 
 changeTheme = () => {
-  const newTheme = (this.state.theme === 'primary') 
+  const newColorTheme = (this.state.colorTheme === 'primary') 
   ? 'secondary'
   : 'primary'
-  this.setState({theme:newTheme})
+  this.setState({colorTheme:newColorTheme})
 }
 
   render(){
@@ -101,7 +101,7 @@ changeTheme = () => {
 
     return (
       <ThemeContext.Provider value={{
-        theme: this.state.theme,
+        colorTheme: this.state.colorTheme,
         changeTheme: this.changeTheme
       }}>
       <div className="App">

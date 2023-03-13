@@ -8,7 +8,7 @@ function Loader(props){
                 obj => (
                     <div className="text-center">
                     <div>{loadingText}</div>
-                    <div className={`mt-3 spinner-border text-${obj.theme}`} role="status">
+                    <div className={`mt-3 spinner-border text-${obj.colorTheme}`} role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>   

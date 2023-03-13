@@ -38,7 +38,7 @@ function Hotel(props){
                 <ThemeContext.Consumer>
                     {
                         obj =>
-                        <a href="#" className={`btn btn-${obj.theme} float-right`}>Show</a>
+                        <a href="#" className={`btn btn-${obj.colorTheme} float-right`}>Show</a>
                     }
                </ThemeContext.Consumer>
             </div>
