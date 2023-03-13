@@ -102,7 +102,7 @@ changeTheme = () => {
     return (
       <ThemeContext.Provider value={{
         theme: this.state.theme,
-        onChange: this.changeTheme
+        changeTheme: this.changeTheme
       }}>
       <div className="App">
         <Layout 
