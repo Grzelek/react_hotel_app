@@ -13,4 +13,4 @@ function Layout(props){
     )
 }
 
-export default withClass(Layout);
+export default withClass(Layout, 'layoutClass');

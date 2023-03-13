@@ -25,13 +25,13 @@ function Searchbar(props){
                     className="form-control" 
                     style={{width: "calc(100% - 20px", marginRight: '20px'}} 
                     type="text" 
-                    placeholder="szukaj..."
+                    placeholder="search..."
                 />
             </div>
                 <div className="">
                 <button 
                 onClick={search}
-                className={`btn btn-${theme.colorTheme}`}>Szukaj</button>
+                className={`btn btn-${theme.colorTheme}`}>Search</button>
                 </div>
         </div>
     )
