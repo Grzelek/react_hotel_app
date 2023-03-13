@@ -15,7 +15,7 @@ class Hotels extends Component {
         return(
            
             <div className={`${styles.hotelsWrap} container`}>
-            <h2 className={styles.header}>Oferty</h2>
+            <h2 className={styles.header}>Offers</h2>
             {this.props.hotels.map(hotel => 
                     <Hotel
                         key={hotel.id} {...hotel}

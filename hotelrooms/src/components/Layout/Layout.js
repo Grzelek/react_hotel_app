@@ -1,13 +1,16 @@
+import MyFragment from "../../hoc/Fragment";
+import withClass from "../../hoc/withClass";
+
 function Layout(props){
 
     return(
-        <div>
+        <MyFragment>
             <div>{props.header}</div>
             <div>{props.menu}</div>
             <div>{props.content}</div>
             <div>{props.footer}</div>
-        </div>
+        </MyFragment>
     )
 }
 
-export default Layout;
+export default withClass(Layout);
