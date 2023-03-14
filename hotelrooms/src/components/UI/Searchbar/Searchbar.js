@@ -22,7 +22,11 @@ function Searchbar(props){
     useEffect(() => {
         focusInput()
     }, []) // if array empty - useEffect will start only once
-    
+
+    const dynamicSearch = (e) => {
+        setTerm(e.target.value)
+        props.onSearch(e.target.value)
+    }
     
 
     return(
@@ -32,7 +36,7 @@ function Searchbar(props){
                     value={term}
                     ref={inputRef}
                     onKeyDown={e => e.key === "Enter" && search()}
-                    onChange={e => setTerm(e.target.value)}
+                    onChange={e => dynamicSearch(e)}
                     className="form-control search-bar" 
                     style={{width: "calc(100% - 20px", marginRight: '20px'}} 
                     type="text" 
