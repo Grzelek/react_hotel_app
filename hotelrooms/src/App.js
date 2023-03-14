@@ -48,20 +48,19 @@ const hotelsList = [
   },
 ];
 
-
+const reducer = (reducer, action) => {
+  if(action.type === 'change-theme'){
+    reducer = (reducer==='primary') ? 'warning' : 'primary'
+  }
+  return reducer
+}
 function App(){
 
   const [hotels, setHotels] = useState([])
   const [loading, setLoading] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  
   //const [theme, setTheme] = useState('primary')
-  const [theme, dispatch] = useReducer((theme, action) => {
-    if(action.type === 'change-theme'){
-      theme = (theme==='primary') ? 'warning' : 'primary'
-    }
-    return theme
-  },'primary')
+  const [theme, dispatch] = useReducer(reducer,'primary')
 
   const searchHandler = (term) => {
     const hotelsResults = [...hotelsList].filter(
