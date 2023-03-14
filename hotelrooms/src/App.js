@@ -60,7 +60,7 @@ const reducer = (state, action) => {
     return {...state, isAuthenticated: action.isAuthenticated}
   }else{
     //return state
-    throw new Error('Action not exist: ',action.type)
+    throw new Error('Action: ['+action.type+'] not exist')
   }
 }
 
