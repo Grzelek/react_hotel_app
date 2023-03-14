@@ -56,8 +56,10 @@ const reducer = (state, action) => {
     return {...state, hotels: action.hotels}
   }else if(action.type === 'update-loading'){
     return {...state, loading: action.loading}
-  }else if(action.type === 'authenticated-user'){
-    return {...state, isAuthenticated: action.isAuthenticated}
+  }else if(action.type === 'user-login'){
+    return {...state, isAuthenticated: true}
+  }else if(action.type === 'user-logout'){
+    return {...state, isAuthenticated: false}
   }else{
     //return state
     throw new Error('Action: ['+action.type+'] not exist')
@@ -126,8 +128,8 @@ function App(){
   return (
     <AuthContext.Provider value={{
       isAuthenticated: state.isAuthenticated,
-      login: () => dispatch({type: 'authenticated-user', isAuthenticated: true}),
-      logout: () => dispatch({type: 'authenticated-user', isAuthenticated: false})
+      login: () => dispatch({type: 'user-login'}),
+      logout: () => dispatch({type: 'user-logout'})
      }}>
     <ThemeContext.Provider value={{
       colorTheme: state.theme,
