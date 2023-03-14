@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Hotels from './components/Hotels/Hotels';
 import Loader from './components/UI/Loader/Loader';
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useReducer, useState } from 'react';
 import Searchbar from './components/UI/Searchbar/Searchbar';
 import Layout from './components/Layout/Layout';
 import Footer from './components/Footer/Footer';
@@ -53,8 +53,15 @@ function App(){
 
   const [hotels, setHotels] = useState([])
   const [loading, setLoading] = useState(true)
-  const [theme, setTheme] = useState('primary')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  
+  //const [theme, setTheme] = useState('primary')
+  const [theme, dispatch] = useReducer((theme, action) => {
+    if(action.type === 'change-theme'){
+      theme = (theme==='primary') ? 'warning' : 'primary'
+    }
+    return theme
+  },'primary')
 
   const searchHandler = (term) => {
     const hotelsResults = [...hotelsList].filter(
@@ -65,10 +72,13 @@ function App(){
   }
 
   const changeTheme = () => {
+    /*
     const newColorTheme = (theme === 'primary') 
     ? 'secondary'
     : 'primary'
     setTheme(newColorTheme)
+    */
+    dispatch({type: 'change-theme'})
   }
 
   useEffect(() => {
