@@ -74,11 +74,6 @@ const initialState = {
 }
 
 function App(){
-
-  //const [hotels, setHotels] = useState([])
-  //const [loading, setLoading] = useState(true)
-  //const [isAuthenticated, setIsAuthenticated] = useState(false)
-  //const [theme, setTheme] = useState('primary')
   const [state, dispatch] = useReducer(reducer,initialState)
 
   const searchHandler = (term) => {
@@ -86,17 +81,10 @@ function App(){
           x => x.name.toLowerCase()
           .includes(term.toLowerCase())
         )
-    //setHotels(hotelsResults)
     dispatch({type: 'update-hotels', hotels: hotelsResults})
   }
 
   const changeTheme = () => {
-    /*
-    const newColorTheme = (theme === 'primary') 
-    ? 'secondary'
-    : 'primary'
-    setTheme(newColorTheme)
-    */
     dispatch({type: 'change-theme'})
   }
 
@@ -111,7 +99,6 @@ function App(){
     <Header>
       <Searchbar 
         onSearch={(term) => searchHandler(term)}
-      
       ></Searchbar>
       <ThemeButton />
     </Header>
