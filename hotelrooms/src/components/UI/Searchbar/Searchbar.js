@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useState, useRef} from "react";
 import PropTypes from 'prop-types'
 import {ThemeContext} from "../../../context/themeContext";
 
@@ -10,13 +10,17 @@ function Searchbar(props){
 
     const theme = useContext(ThemeContext)
     const [term, setTerm] = useState('');
+    const inputRef = useRef()
 
     const search = () => {
         props.onSearch(term)
     }
 
+    const focusInput = () => {
+        inputRef.current.focus()
+    }
     useEffect(() => {
-        document.querySelector('.search-bar').focus()
+        focusInput()
     }, []) // if array empty - useEffect will start only once
     
     
@@ -26,6 +30,7 @@ function Searchbar(props){
             <div className="form-group">
                 <input 
                     value={term}
+                    ref={inputRef}
                     onKeyDown={e => e.key === "Enter" && search()}
                     onChange={e => setTerm(e.target.value)}
                     className="form-control search-bar" 
