@@ -48,26 +48,44 @@ const hotelsList = [
   },
 ];
 
-const reducer = (reducer, action) => {
+const reducer = (state, action) => {
   if(action.type === 'change-theme'){
-    reducer = (reducer==='primary') ? 'warning' : 'primary'
+    const newTheme = (state.theme==='primary') ? 'warning' : 'primary'
+    return {...state, theme: newTheme}
+  }else if(action.type === 'update-hotels'){
+    return {...state, hotels: action.hotels}
+  }else if(action.type === 'update-loading'){
+    return {...state, loading: action.loading}
+  }else if(action.type === 'authenticated-user'){
+    return {...state, isAuthenticated: action.isAuthenticated}
+  }else{
+    //return state
+    throw new Error('Action not exist: ',action.type)
   }
-  return reducer
 }
+
+const initialState = {
+  hotels: [],
+  theme: 'primary',
+  loading: true,
+  isAuthenticated: false
+}
+
 function App(){
 
-  const [hotels, setHotels] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  //const [hotels, setHotels] = useState([])
+  //const [loading, setLoading] = useState(true)
+  //const [isAuthenticated, setIsAuthenticated] = useState(false)
   //const [theme, setTheme] = useState('primary')
-  const [theme, dispatch] = useReducer(reducer,'primary')
+  const [state, dispatch] = useReducer(reducer,initialState)
 
   const searchHandler = (term) => {
     const hotelsResults = [...hotelsList].filter(
           x => x.name.toLowerCase()
           .includes(term.toLowerCase())
         )
-    setHotels(hotelsResults)
+    //setHotels(hotelsResults)
+    dispatch({type: 'update-hotels', hotels: hotelsResults})
   }
 
   const changeTheme = () => {
@@ -82,8 +100,8 @@ function App(){
 
   useEffect(() => {
     setTimeout(() =>{
-      setHotels(hotelsList)
-      setLoading(false)
+      dispatch({type: 'update-hotels', hotels: hotelsList})
+      dispatch({type: 'update-loading', loading: false})
     },1000)
   }, [])
 
@@ -97,22 +115,22 @@ function App(){
     </Header>
   )
   const content = (
-    loading 
+    state.loading 
     ? (<Loader text={'Loading Hotels'} />)
     : (<Hotels 
-      hotels={hotels} 
-      loading={loading}
+      hotels={state.hotels} 
+      loading={state.loading}
       />)
   )
 
   return (
     <AuthContext.Provider value={{
-      isAuthenticated: isAuthenticated,
-      login: () => setIsAuthenticated(true),
-      logout: () => setIsAuthenticated(false)
+      isAuthenticated: state.isAuthenticated,
+      login: () => dispatch({type: 'authenticated-user', isAuthenticated: true}),
+      logout: () => dispatch({type: 'authenticated-user', isAuthenticated: false})
      }}>
     <ThemeContext.Provider value={{
-      colorTheme: theme,
+      colorTheme: state.theme,
       changeTheme: changeTheme
     }}>
     <div className="App">
